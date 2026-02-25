@@ -10,9 +10,7 @@ from sqlalchemy.exc import IntegrityError
 
 from schemas.auth import UserSignUp, UserRead, TokenData
 from models.auth import UserModel
-from config import Settings
-
-settings = Settings()
+from config import settings
 
 SECRET_KEY = settings.jwt_secret
 ALGORITHM = settings.jwt_alg

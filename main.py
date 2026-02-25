@@ -2,16 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
-from routes import auth, tasks, tags
-from config import Settings
+from routes import auth, tasks
+from config import settings
 from utils import limiter
-
-settings = Settings()
 
 routers = [
     auth.router,
     tasks.router,
-    tags.router,
 ]
 
 origins = settings.origins

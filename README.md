@@ -1,6 +1,6 @@
-# Sobes API (FastAPI + Async SQLAlchemy)
+# FastAPI Task Manager (FastAPI + Async SQLAlchemy)
 
-Minimal FastAPI skeleton with async SQLAlchemy 2.0, JWT auth, tags/tasks, and rate limiting.
+Minimal FastAPI skeleton with async SQLAlchemy 2.0, JWT auth, tasks, and rate limiting.
 
 ## Stack
 - FastAPI
@@ -47,5 +47,5 @@ uvicorn main:app --reload
 3. Use `Authorization: Bearer <token>` for protected routes
 
 ## Notes
-- Alembic migrations are not set up yet.
+- Alembic is configured; run migrations as needed.
 - This is a skeleton project; no production hardening beyond basic JWT checks and rate limiting.

@@ -7,7 +7,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from services import auth
 from schemas.auth import Token, UserRead, UserSignUp
 from db import get_async_session
-from utils.limiter import limiter
+from utils.limiter import custom_limiter
 from deps import get_active_user
 
 router = APIRouter()
@@ -22,7 +22,7 @@ async def sign_up(
 
 
 @router.post("/token", response_model=Token)
-@limiter.limit("10/minute")
+@custom_limiter("10/minute")
 async def login_for_access_token(
     request: Request,
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],

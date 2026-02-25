@@ -2,10 +2,7 @@ import asyncio
 
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-import config
-
-
-settings = config.Settings()
+from config import settings
 
 
 engine = create_async_engine(settings.database_url)
@@ -32,6 +29,3 @@ async def drop_db():
 
     async with engine.begin() as connection:
         await connection.run_sync(base.Base.metadata.drop_all)
-
-if __name__ == "__main__":
-    asyncio.run(recreate_db())
