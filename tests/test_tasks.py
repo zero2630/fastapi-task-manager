@@ -8,7 +8,7 @@ import pytest
         ("Task1", None),
         ("Task1", ""),
         ("Task1", "description of task"),
-    ]
+    ],
 )
 async def test_create_task(client, user_token, title, description):
     headers = {"Authorization": f"Bearer {user_token}"}
@@ -17,7 +17,7 @@ async def test_create_task(client, user_token, title, description):
     }
     if description is not None:
         body.update({"description": description})
-    
+
     response = await client.post(
         "/tasks",
         headers=headers,
@@ -29,7 +29,9 @@ async def test_create_task(client, user_token, title, description):
     assert "title" in response_data
     assert "description" in response_data
     assert response_data["title"] == title
-    assert (response_data["description"] == description or (description is None and response_data["description"] == ""))
+    assert response_data["description"] == description or (
+        description is None and response_data["description"] == ""
+    )
 
 
 @pytest.mark.anyio
@@ -37,7 +39,7 @@ async def test_create_task_unauthorized(client, user_token):
     body = {"title": "Task1"}
 
     response = await client.post("/tasks", json=body)
-    
+
     assert response.status_code == 401
 
 
@@ -68,14 +70,12 @@ async def test_update_task(client, user_token, title, description):
     if description is not None:
         body.update({"description": description})
 
-    
     response = await client.patch(
         f"/tasks/{task_id}",
         headers=headers,
         json=body,
     )
     response_data = response.json()
-
 
     assert response.status_code == 200
     assert "title" in response_data

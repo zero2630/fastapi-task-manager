@@ -53,7 +53,6 @@ async def test_token_unauthorized(client, test_user):
     }
 
     response = await client.post("/token", data=data)
-    response_data = response.json()
 
     assert response.status_code == 401
 

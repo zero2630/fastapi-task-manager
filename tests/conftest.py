@@ -39,7 +39,8 @@ async def db_session(test_engine):
     yield
 
     await session.close()
-    if trans.is_active: await trans.rollback()
+    if trans.is_active:
+        await trans.rollback()
     await connection.close()
 
     app.dependency_overrides.clear()
@@ -64,7 +65,7 @@ async def test_user(client):
 
     response = await client.post("/signup", json=body)
     assert response.status_code == 200
-    
+
     yield response
 
 

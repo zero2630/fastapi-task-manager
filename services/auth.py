@@ -8,7 +8,7 @@ from sqlalchemy import select
 from asyncpg.exceptions import UniqueViolationError
 from sqlalchemy.exc import IntegrityError
 
-from schemas.auth import UserSignUp, UserRead, TokenData
+from schemas.auth import UserSignUp, UserRead
 from models.auth import UserModel
 from config import settings
 
@@ -87,8 +87,6 @@ async def get_current_user(token: str, session):
 
         if payload.get("token_type") != "access":
             raise credentials_exception
-
-        token_data = TokenData(user_id=user_id)
 
     except InvalidTokenError:
         raise credentials_exception
