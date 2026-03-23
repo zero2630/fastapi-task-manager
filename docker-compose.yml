@@ -32,8 +32,7 @@ services:
     build: .
     env_file: [.env]
     depends_on: [db]
-    command: ["uv", "run", "alembic", "upgrade", "head"]
-    profiles: ["migrations"]
+    command: ["alembic", "upgrade", "head"]
 
 
 volumes:
