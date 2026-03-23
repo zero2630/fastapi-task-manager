@@ -2,9 +2,9 @@ import pytest
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from config import settings
-from db import get_async_session
-from main import app
+from app.core.config import settings
+from app.core.db import get_async_session
+from app.main import app
 from models import Base
 
 

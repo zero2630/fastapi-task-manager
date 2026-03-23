@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
-from routes import auth, tasks
-from config import settings
-from utils import limiter
+from app.routes import auth, tasks
+from app.core.config import settings
+from app.utils import limiter
 
 routers = [
     auth.router,

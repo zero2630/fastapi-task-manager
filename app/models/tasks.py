@@ -1,7 +1,7 @@
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 from sqlalchemy import ForeignKey, String, Text
 
-from models.base import Base
+from app.models.base import Base
 
 
 class TaskModel(Base):

@@ -3,11 +3,11 @@ from typing import Annotated
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from services import tasks
-from schemas.tasks import TaskSchema, TaskDBSchema, TaskUpdateSchema
-from schemas.auth import UserRead
-from db import get_async_session
-from deps import get_active_user
+from app.services import tasks
+from app.schemas.tasks import TaskSchema, TaskDBSchema, TaskUpdateSchema
+from app.schemas.auth import UserRead
+from app.core.db import get_async_session
+from app.core.deps import get_active_user
 
 
 router = APIRouter(prefix="/tasks")

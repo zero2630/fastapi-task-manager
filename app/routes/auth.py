@@ -4,11 +4,11 @@ from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.security import OAuth2PasswordRequestForm
 
-from services import auth
-from schemas.auth import Token, UserRead, UserSignUp
-from db import get_async_session
-from utils.limiter import custom_limiter
-from deps import get_active_user
+from app.services import auth
+from app.schemas.auth import Token, UserRead, UserSignUp
+from app.core.db import get_async_session
+from app.utils.limiter import custom_limiter
+from app.core.deps import get_active_user
 
 router = APIRouter()
 

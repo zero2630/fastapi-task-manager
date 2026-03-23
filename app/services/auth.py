@@ -8,9 +8,9 @@ from sqlalchemy import select
 from asyncpg.exceptions import UniqueViolationError
 from sqlalchemy.exc import IntegrityError
 
-from schemas.auth import UserSignUp, UserRead
-from models.auth import UserModel
-from config import settings
+from app.schemas.auth import UserSignUp, UserRead
+from app.models.auth import UserModel
+from app.core.config import settings
 
 SECRET_KEY = settings.jwt_secret
 ALGORITHM = settings.jwt_alg

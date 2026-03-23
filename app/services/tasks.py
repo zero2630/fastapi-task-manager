@@ -2,9 +2,9 @@ from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from schemas.tasks import TaskSchema, TaskDBSchema, TaskUpdateSchema
-from schemas.auth import UserRead
-from models.tasks import TaskModel
+from app.schemas.tasks import TaskSchema, TaskDBSchema, TaskUpdateSchema
+from app.schemas.auth import UserRead
+from app.models.tasks import TaskModel
 
 
 def check_owner(user_id: int, task_user_id: int):
