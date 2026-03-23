@@ -9,37 +9,29 @@ Minimal FastAPI skeleton with async SQLAlchemy 2.0, JWT auth, tasks, and rate li
 - JWT (PyJWT)
 - Pydantic v2
 - SlowAPI (rate limiting)
+- Docker + Docker Compose
 
 ## Requirements
-- Python 3.14+
-- PostgreSQL
-- Redis (for rate limiting)
+- Docker
+- Docker Compose
 
 ## Setup
-1. Create and activate a virtual environment.
-2. Install dependencies:
 
-```bash
-pip install -e .
-```
-
-If you use uv:
-
-```bash
-uv sync
-```
-
-## Environment
-Copy `.env.example` to `.env` and adjust values:
+1. Copy environment variables:
 
 ```bash
 cp .env.example .env
 ```
 
-## Run
+2. Build and run the project:
+
 ```bash
-uvicorn main:app --reload
+docker compose up --build
 ```
+
+## App
+- API will be available at: http://localhost:8000
+- Docs: http://localhost:8000/docs
 
 ## Auth flow (quick check)
 1. `POST /signup`
@@ -47,5 +39,6 @@ uvicorn main:app --reload
 3. Use `Authorization: Bearer <token>` for protected routes
 
 ## Notes
-- Alembic is configured; run migrations as needed.
-- This is a skeleton project; no production hardening beyond basic JWT checks and rate limiting.
+- PostgreSQL and Redis are started via Docker Compose
+- Alembic is configured; run migrations as needed inside the container
+- This is a skeleton project; no production hardening beyond basic JWT checks and rate limiting
